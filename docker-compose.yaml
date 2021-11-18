@@ -1,0 +1,27 @@
+version: "3"
+services:
+  firebase:
+    image: firebase
+    build:
+      context: .firebase
+    ports:
+    - 8081:8081
+    - 8082:8082
+    - 9091:9091
+    volumes:
+    - ./.firebase/firebase.json:/app/firebase.json
+  app:
+    image: golang-pub
+    build:
+      context: .
+    ports:
+    - 8080:8080
+    environment:
+    - PUBSUB_EMULATOR_HOST=firebase:9091
+    - API_SERVER_PORT=8080
+    - PROJECT_ID=poc-project
+    - TOPIC_ID=test-topic
+    - ONE_SUBSCRIPTION_ID=one-sub
+    - TWO_SUBSCRIPTION_ID=two-sub
+    depends_on:
+    - firebase

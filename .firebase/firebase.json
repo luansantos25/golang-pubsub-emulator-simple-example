@@ -1,0 +1,17 @@
+{
+  "emulators": {
+    "firestore": {
+      "port": 8081,
+      "host": "0.0.0.0"
+    },
+    "pubsub": {
+      "port": 9091,
+      "host": "0.0.0.0"
+    },
+    "ui": {
+      "enabled": true,
+      "port": 8082,
+      "host": "0.0.0.0"
+    }
+  }
+}
